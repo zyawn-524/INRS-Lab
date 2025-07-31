@@ -2,115 +2,264 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INRS Lab</n>
+  <meta name="viewport" content="width=1920, initial-scale=1.0">
+  <title>INRS Lab 홍보</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; line-height: 1.6; }
-    nav { background-color: #333; position: fixed; width: 100%; top: 0; z-index: 1000; }
-    nav ul { display: flex; margin: 0; padding: 0; list-style: none; }
-    nav li { }
-    nav a { display: block; padding: 15px 20px; color: #fff; text-decoration: none; }
-    nav a:hover { background-color: #575757; }
-    .container { max-width: 960px; margin: 0 auto; padding: 80px 20px 40px; }
-    section { padding: 60px 0; }
-    h1, h2, h3 { color: #333; margin-top: 0; }
-    ul { padding-left: 20px; }
-    footer { background-color: #f4f4f4; text-align: center; padding: 20px 0; }
+    body {
+      margin: 0;
+      background: #f6f8fa;
+      font-family: 'Noto Sans KR', Arial, sans-serif;
+      color: #222;
+      min-width: 1280px;
+      min-height: 720px;
+      overflow-x: auto;
+    }
+    .main-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1850px;
+      min-height: 680px;
+      margin: 0 auto;
+      gap: 40px;
+      padding: 48px 32px 16px 32px;
+      box-sizing: border-box;
+    }
+    .left-panel, .right-panel {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 32px 36px 28px 36px;
+      min-width: 480px;
+      max-width: 600px;
+      height: fit-content;
+    }
+    .left-panel {
+      flex: 1 1 700px;
+      min-width: 700px;
+      padding: 0;
+      background: none;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 24px;
+    }
+    .carousel {
+      position: relative;
+      width: 700px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.13);
+      background: #eee;
+    }
+    .carousel-slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+    .carousel-dots {
+      position: absolute;
+      bottom: 18px;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+    }
+    .carousel-dot {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      background: #bbb;
+      border-radius: 50%;
+      margin: 0 6px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .carousel-dot.active {
+      background: #17409e;
+    }
+    .headline {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #17409e;
+      letter-spacing: -1px;
+    }
+    .sub-headline {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #456;
+      margin-bottom: 18px;
+    }
+    .right-panel .info-title {
+      font-size: 1.5rem;
+      color: #17409e;
+      font-weight: bold;
+      margin-bottom: 12px;
+      margin-top: 0;
+    }
+    .keyword-list {
+      font-size: 1.08rem;
+      margin: 7px 0 15px 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-list li {
+      background: #17409e;
+      color: #fff;
+      border-radius: 8px;
+      padding: 6px 16px;
+      font-size: 0.98rem;
+    }
+    .members-list, .project-list, .publication-list {
+      margin: 0 0 8px 0;
+      padding-left: 18px;
+      font-size: 1.08rem;
+    }
+    .info-section {
+      margin-bottom: 24px;
+    }
+    .contact {
+      text-align: center;
+      color: #666;
+      margin-top: 16px;
+      font-size: 1.07rem;
+    }
+    @media (max-width: 1450px) {
+      .main-wrapper { gap: 18px; }
+      .left-panel, .right-panel { min-width: 420px; max-width: 520px; }
+      .carousel, .carousel-slide img, .carousel-slide { width: 520px; height: 300px; }
+      .headline { font-size: 2.1rem;}
+    }
+    @media (max-width: 1100px) {
+      .main-wrapper { flex-direction: column; align-items: center; }
+      .left-panel, .right-panel { min-width: 90vw; max-width: 97vw; }
+      .carousel, .carousel-slide img, .carousel-slide { width: 96vw; max-width: 600px; height: 200px; }
+      .headline { font-size: 1.4rem;}
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="#home">홈</a></li>
-      <li><a href="#welcome">인사말</a></li>
-      <li><a href="#research">실험실 연구목록</a></li>
-      <li><a href="#professor">교수소개</a></li>
-      <li><a href="#members">구성원</a></li>
-      <li><a href="#projects">프로젝트</a></li>
-      <li><a href="#life">연구라이프</a></li>
-      <li><a href="#courses">수업</a></li>
-      <li><a href="#publications">논문</a></li>
-      <li><a href="#employment">졸업생 취업 현황</a></li>
-    </ul>
-  </nav>
+  <div class="main-wrapper">
 
-  <section id="home" class="container">
-    <h1>INRS Lab</h1>
-    <p>INRS Laboratory에 오신 것을 환영합니다. 저희 연구실은 Interferometric Remote Sensing 기술을 이용하여 지반 변형 및 재난 모니터링 연구를 수행하고 있습니다.</p>
-  </section>
+    <!-- 왼쪽: 이미지/소개/키워드 -->
+    <div class="left-panel">
+      <div class="carousel" id="mainCarousel">
+        <div class="carousel-slide active"><img src="image/동백섬_1.jpg" alt="실험실 사진1"></div>
+        <div class="carousel-slide"><img src="image/전망대_2.jpg" alt="실험실 사진2"></div>
+        <div class="carousel-slide"><img src="image/횟집_3.jpg" alt="실험실 사진3"></div>
+        <div class="carousel-slide"><img src="images/lab4.jpg" alt="실험실 사진4"></div>
+        <div class="carousel-slide"><img src="images/lab5.jpg" alt="실험실 사진5"></div>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="headline">INRS Lab</div>
+      <div class="sub-headline">
+        A Laboratory of Discovery<br>:Where Neutron Science, Radiology, and Intelligence Unite
+      </div>
+      <ul class="keyword-list">
+        <li>Neutron Science</li>
+        <li>Applied Radiology</li>
+        <li>X-ray Grating Interferometry</li>
+        <li>Machine Intelligence</li>
+        <li>Tomographic Image Reconstruction</li>
+      </ul>
+    </div>
 
-  <section id="welcome" class="container">
-    <h2>인사말</h2>
-    <p>INRS Lab의 연구실장 교수님 인사말이 여기에 들어갑니다. 연구실의 비전과 주요 연구 방향을 간략히 소개하세요.</p>
-  </section>
-
-  <section id="research" class="container">
-    <h2>실험실 연구목록</h2>
-    <ul>
-      <li>InSAR 기반 지반 변형 분석</li>
-      <li>다중 위성 데이터 융합</li>
-      <li>재해 모니터링 시스템 개발</li>
-      <li>기계 학습을 활용한 영상 처리</li>
-    </ul>
-  </section>
-
-  <section id="professor" class="container">
-    <h2>교수소개</h2>
-    <h3>Prof. 홍길동</h3>
-    <p>부산대학교 기계공학부 교수. 전공: 위성 원격 탐사, InSAR 분석, 재해 모니터링.</p>
-  </section>
-
-  <section id="members" class="container">
-    <h2>구성원</h2>
-    <ul>
-      <li>박사과정: 김철수, 이영희</li>
-      <li>석사과정: 박민준, 최수연</li>
-      <li>학부연구생: 정우성, 오하나</li>
-    </ul>
-  </section>
-
-  <section id="projects" class="container">
-    <h2>프로젝트</h2>
-    <ul>
-      <li>도시 침하 모니터링 시스템 (2024-2026)</li>
-      <li>태풍 피해 산출 자동화 도구 개발 (2023-2025)</li>
-      <li>실시간 지진 전진 파형 예측 모델 (2025-2027)</li>
-    </ul>
-  </section>
-
-  <section id="life" class="container">
-    <h2>연구라이프</h2>
-    <p>연구실의 일상, 세미나, 워크숍, 해외 학회 참가 사진과 후기를 공유하세요.</p>
-  </section>
-
-  <section id="courses" class="container">
-    <h2>수업</h2>
-    <ul>
-      <li>위성 원격 탐사 기법</li>
-      <li>영상 처리 및 분석</li>
-      <li>기계 학습 응용</li>
-    </ul>
-  </section>
-
-  <section id="publications" class="container">
-    <h2>논문</h2>
-    <ul>
-      <li>홍길동 외, "InSAR 기반 도시 침하 분석", Journal of Remote Sensing, 2024.</li>
-      <li>김철수 외, "Machine Learning을 활용한 지반 변형 예측", GIScience & Remote Sensing, 2023.</li>
-    </ul>
-  </section>
-
-  <section id="employment" class="container">
-    <h2>졸업생 취업 현황</h2>
-    <ul>
-      <li>이영희 - 한국지질자원연구원</li>
-      <li>박민준 - 한국항공우주연구원</li>
-      <li>최수연 - 한국수자원공사</li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 INRS Lab. All rights reserved.</p>
-  </footer>
+    <!-- 오른쪽: 정보/구성원/성과 등 -->
+    <div class="right-panel">
+      <div class="info-section">
+        <h2 class="info-title">연구실 소개</h2>
+        <p>
+          INRS Lab(Intelligent Neutron and Radiological Science Lab)은 부산대학교 기계공학부 원자력공학 전공 소속으로, <b>방사선 시스템 설계 및 중성자 공학을 활용한 첨단 영상 기술 개발</b>을 목표로 연구를 수행하는 연구실입니다. 또한, <b>방사선 기반의 시스템 최적화, 중성자 영상 기술, 머신러닝 융합</b>을 통해 학문적 발견과 실질적 응용을 동시에 추구합니다.<br>
+        </p>
+      </div>
+      <div class="info-section">
+        <h2 class="info-title">구성원</h2>
+        <ul class="members-list">
+          <li><b>연구실장:</b> 홍길동 교수 (부산대학교 기계공학부)</li>
+          <li><b>박사과정:</b> 김철수, 이영희</li>
+          <li><b>석사과정:</b> 박민준, 최수연</li>
+          <li><b>학부연구생:</b> 정우성, 오하나</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <h2 class="info-title">주요 연구 및 프로젝트</h2>
+        <ul class="project-list">
+          <li>도시 침하 모니터링 시스템 개발 (2024-2026)</li>
+          <li>태풍 피해 산출 자동화 도구 개발 (2023-2025)</li>
+          <li>실시간 지진 전진 파형 예측 모델 (2025-2027)</li>
+          <li>위성 영상 기반 산사태 위험지역 분석 (2022-2024)</li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <h2 class="info-title">대표 논문</h2>
+        <ul class="publication-list">
+          <li>홍길동 외, "InSAR 기반 도시 침하 분석", <i>Journal of Remote Sensing</i>, 2024.</li>
+          <li>김철수 외, "Machine Learning을 활용한 지반 변형 예측", <i>GIScience & Remote Sensing</i>, 2023.</li>
+          <li>이영희 외, "다중 위성 영상 융합 기법", <i>Korean Journal of Geomatics</i>, 2022.</li>
+        </ul>
+      </div>
+      <div class="contact">
+        문의: 이승욱 교수 / 이메일: seunglee@pusan.ac.kr / 위치: 부산대학교 부산캠퍼스 기계관 119호, 제3공학관 3109호<br>
+        &copy; 2025 INRS Lab. All rights reserved.
+      </div>
+    </div>
+  </div>
+  <script>
+    // 캐러셀 (자동 슬라이드)
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.getElementById('mainCarousel');
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const dotsContainer = carousel.querySelector('.carousel-dots');
+      let current = 0;
+      let autoInterval;
+      // 도트 생성
+      slides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `${idx+1}번째 사진`);
+        dot.addEventListener('click', () => showSlide(idx));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      function showSlide(idx) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = idx;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+      // 자동 전환
+      function startAuto() {
+        autoInterval = setInterval(nextSlide, 4000);
+      }
+      function stopAuto() {
+        clearInterval(autoInterval);
+      }
+      carousel.addEventListener('mouseenter', stopAuto);
+      carousel.addEventListener('mouseleave', startAuto);
+      startAuto();
+    });
+  </script>
 </body>
 </html>
